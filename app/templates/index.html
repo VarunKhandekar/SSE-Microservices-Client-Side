@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book ID and Genre Form</title>
+    <script>
+        function toggleInput() {
+            var bookIdInput = document.getElementById("book_id");
+            var genreInput = document.getElementById("genre");
+
+            if (bookIdInput.value !== "") {
+                genreInput.disabled = true;
+            } else {
+                genreInput.disabled = false;
+            }
+
+            if (genreInput.value !== "") {
+                bookIdInput.disabled = true;
+            } else {
+                bookIdInput.disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter Book ID or Genre</h1>
+    <form action="/book" method="post">
+        <label for="book_id">Book ID:</label>
+        <input type="number" id="book_id" name="book_id" oninput="toggleInput()" required>
+        <br>
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" oninput="toggleInput()" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
